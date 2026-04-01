@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>StayDesk - Smart Hotel Management</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #00ffd5;
+            --violet: #7b2ff7;
+            --yellow: #ffd700;
+            --dark-bg: #0f2027;
+            --light-bg: #f5f7fa;
+            --text-dark: white;
+            --text-light: #222;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            transition: 0.4s;
+        }
+
+        body.dark {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: var(--text-dark);
+        }
+
+        body.light {
+            background: var(--light-bg);
+            color: var(--text-light);
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 60px;
+            align-items: center;
+        }
+
+        header h1 {
+            color: var(--primary);
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            border: none;
+            margin-left: 10px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .login-btn {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: inherit;
+        }
+
+        .signin-btn {
+            background: linear-gradient(45deg, var(--primary), var(--violet));
+            color: black;
+        }
+
+        .toggle-btn {
+            background: var(--yellow);
+            color: black;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .hero h2 {
+            font-size: 50px;
+            background: linear-gradient(45deg, var(--primary), var(--violet), var(--yellow));
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .features {
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .feature-box {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            padding: 20px;
+            margin: 15px;
+            border-radius: 15px;
+            width: 250px;
+            backdrop-filter: blur(10px);
+            transition: 0.4s;
+        }
+
+        body.dark .card {
+            background: rgba(255,255,255,0.1);
+        }
+
+        body.light .card {
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px var(--violet);
+        }
+
+        .about, .developer {
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .developer img {
+            width: 120px;
+            border-radius: 50%;
+            margin-top: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            opacity: 0.7;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+    </style>
+</head>
+
+<body class="dark">
+
+<header>
+    <h1>StayDesk</h1>
+
+    <div>
+        <button class="btn toggle-btn" onclick="toggleTheme()">🌙 / ☀️</button>
+
+        <a th:href="@{/login}">
+            <button class="btn login-btn">Login</button>
+        </a>
+
+        <a th:href="@{/register}">
+            <button class="btn signin-btn">Sign In</button>
+        </a>
+    </div>
+</header>
+
+<section class="hero">
+    <h2>Welcome to StayDesk</h2>
+    <p>Smart Hotel Reservation & Management System</p>
+</section>
+
+<section class="features">
+    <h2>✨ Features</h2>
+    <div class="feature-box">
+        <div class="card">Room Availability Tracking</div>
+        <div class="card">Quick Reservation System</div>
+        <div class="card">Customer Management</div>
+        <div class="card">Invoice Generation</div>
+        <div class="card">Easy Check-in / Check-out</div>
+    </div>
+</section>
+
+<section class="about">
+    <h2>📌 About Project</h2>
+    <p>
+        StayDesk helps hotel staff easily manage rooms, customers, and reservations efficiently.
+    </p>
+</section>
+
+<section class="developer">
+    <h2>👨‍💻 Developer</h2>
+    <p>Krishna Das</p>
+    <img src="https://via.placeholder.com/120">
+</section>
+
+<footer>
+    <p>© 2026 StayDesk</p>
+</footer>
+
+<script>
+    function toggleTheme() {
+        document.body.classList.toggle("light");
+        document.body.classList.toggle("dark");
+    }
+</script>
+
+</body>
+</html>

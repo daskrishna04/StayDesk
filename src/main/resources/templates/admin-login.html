@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Login - StayDesk</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #0f2027, #1a1a40, #2c5364);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .container {
+            width: 370px;
+            padding: 40px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 0 40px rgba(0,0,0,0.6);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #a855f7, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            margin-bottom: 20px;
+            color: #ffd700;
+        }
+
+        .input-group {
+            margin: 15px 0;
+            text-align: left;
+        }
+
+        label {
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        input:focus {
+            box-shadow: 0 0 8px #a855f7;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .login-btn {
+            background: linear-gradient(45deg, #a855f7, #ffd700);
+            color: black;
+        }
+
+        .back-btn {
+            background: transparent;
+            border: 2px solid #a855f7;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(168,85,247,0.6);
+        }
+
+        .error {
+            margin-top: 10px;
+            color: #ff4d4d;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<form th:action="@{/auth/login}" method="post">
+
+<div class="container">
+
+    <h2>Admin / Manager Login</h2>
+    <p class="subtitle">Only authorized users can access registration</p>
+
+    <div id="error" class="error"></div>
+
+    <div class="input-group">
+        <label>Username</label>
+        <input type="text" id="username" placeholder="Enter username">
+    </div>
+
+    <div class="input-group">
+        <label>Password</label>
+        <input type="password" id="password" placeholder="Enter password">
+    </div>
+
+    <button type="submit" class="btn login-btn">Login</button>
+
+    <a href="/">
+        <button class="btn back-btn">Back</button>
+    </a>
+
+</div>
+</form>
+</body>
+</html>

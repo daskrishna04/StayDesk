@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Restricted Access - StayDesk</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #0f2027, #1a1a40, #2c5364);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255,255,255,0.05);
+            padding: 50px;
+            border-radius: 20px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 0 40px rgba(0,0,0,0.6);
+            width: 400px;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #a855f7, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            opacity: 0.8;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            margin: 10px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .login-btn {
+            background: linear-gradient(45deg, #a855f7, #ffd700);
+            color: black;
+        }
+
+        .back-btn {
+            background: transparent;
+            border: 2px solid #a855f7;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 15px rgba(168,85,247,0.6);
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="icon">🔒</div>
+
+    <h2>Restricted Access</h2>
+
+    <p>
+        This feature is only available for <b>Admin</b> or <b>Manager</b>.
+        Please login with authorized credentials to continue.
+    </p>
+
+    <a th:href="@{/auth/admin-login}">
+        <button class="btn login-btn">Login as Admin / Manager</button>
+    </a>
+
+    <a th:href="@{/}">
+        <button class="btn back-btn">Back to Home</button>
+    </a>
+
+</div>
+
+</body>
+</html>

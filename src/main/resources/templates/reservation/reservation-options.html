@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservations | Hotel Management</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f6f8fc, #eef1f7);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: #ffffff;
+            width: 850px;
+            padding: 50px;
+            border-radius: 18px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: 600;
+            color: #2c2c2c;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #7a7a7a;
+            margin-bottom: 40px;
+        }
+
+        .card-wrapper {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .card {
+            flex: 1;
+            background: linear-gradient(145deg, #ffffff, #f4f6fb);
+            border-radius: 16px;
+            padding: 40px 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .checkin-icon {
+            color: #4a7cff;
+        }
+
+        .checkout-icon {
+            color: #ff6b6b;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 500;
+            color: #2b2b2b;
+            margin-bottom: 10px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-checkin {
+            background: linear-gradient(135deg, #4a7cff, #6fa3ff);
+            color: #fff;
+        }
+
+        .btn-checkin:hover {
+            background: linear-gradient(135deg, #3b6ef5, #5b92f7);
+        }
+
+        .btn-checkout {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: #fff;
+        }
+
+        .btn-checkout:hover {
+            background: linear-gradient(135deg, #f25555, #ff7b7b);
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 12px;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="title">Reservation Management</div>
+    <div class="subtitle">Select an option to proceed with guest reservations</div>
+
+    <div class="card-wrapper">
+
+        <!-- CHECK-IN CARD -->
+        <div class="card">
+            <div class="icon checkin-icon">🛎️</div>
+            <div class="card-title">Guest Check-In</div>
+            <div class="card-desc">
+                Register guest arrival, assign rooms, and begin stay seamlessly.
+            </div>
+            <a th:href="@{/reservation/reservation-form}" class="btn btn-checkin">
+                Proceed to Check-In
+            </a>
+        </div>
+
+        <!-- CHECK-OUT CARD -->
+        <div class="card">
+            <div class="icon checkout-icon">🧾</div>
+            <div class="card-title">Guest Check-Out</div>
+            <div class="card-desc">
+                Complete stay, generate bills, and free room availability.
+            </div>
+            <a th:href="@{/reservation/reservation-search}" class="btn btn-checkout">
+                Proceed to Check-Out
+            </a>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        © 2025 Luxury Hotel Reservation System
+    </div>
+</div>
+
+</body>
+</html>

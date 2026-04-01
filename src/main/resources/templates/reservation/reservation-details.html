@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Guest Check-Out</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f4f6fb, #eef1f7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .box {
+            background: white;
+            width: 700px;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c2c2c;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .label {
+            color: #777;
+        }
+
+        .value {
+            color: #333;
+            font-weight: 500;
+        }
+
+        .btn {
+            margin-top: 30px;
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Guest Check-Out</h2>
+
+    <div class="row">
+        <span class="label">Guest Name</span>
+        <span class="value" th:text="${reservation.client.clientName}"></span>
+    </div>
+
+    <div class="row">
+        <span class="label">Room Number</span>
+        <span class="value" th:text="${reservation.room.roomNo}"></span>
+    </div>
+
+    <div class="row">
+        <span class="label">Check-In Time</span>
+        <span class="value" th:text="${reservation.client.checkInTime}"></span>
+    </div>
+
+    <div class="row">
+        <span class="label">Advance Payment</span>
+        <span class="value">₹ <span th:text="${reservation.balance}"></span></span>
+    </div>
+
+    <div class="row">
+        <span class="label">Payment Due</span>
+        <span class="value">₹ <span th:text="${billAmount} - ${reservation.balance} + '.0'"></span></span>
+    </div>
+
+    <div class="row">
+        <span class="label">Total Bill</span>
+        <span class="value">₹ <span th:text="${billAmount}"></span></span>
+    </div>
+
+    <form th:action="@{/reservation/checkout-success/{id}(id=${reservation.reservationId})}" method="post">
+        <button class="btn">Confirm Check-Out</button>
+    </form>
+</div>
+
+</body>
+</html>
