@@ -41,8 +41,8 @@ public class WebSecurityConfig {
 //                        .requestMatchers("/**/*.html").permitAll()
                         //protected apis
                         .requestMatchers("/admin-register").hasAnyRole("ADMIN","MANAGER")
-                        .requestMatchers("/room/**").hasRole("MANAGER")
-                        .requestMatchers("/reservation/**","/client/**").hasAnyRole("ADMIN", "MANAGER")
+//                        .requestMatchers("/room/**").hasRole("MANAGER")
+//                        .requestMatchers("/reservation/**","/client/**").hasAnyRole("ADMIN", "MANAGER")
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
