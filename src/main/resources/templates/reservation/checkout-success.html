@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout Successful</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #f4f7fb, #e9eef5);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .success-card {
+            background: #ffffff;
+            width: 450px;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: slideUp 0.6s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: #e8f7ef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #2ecc71;
+            font-size: 40px;
+        }
+
+        h1 {
+            margin: 10px 0;
+            color: #2c3e50;
+            font-size: 26px;
+        }
+
+        p {
+            color: #6c757d;
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
+
+        .details {
+            text-align: left;
+            margin-bottom: 30px;
+            background: #f8f9fb;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .details div {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #34495e;
+        }
+
+        .details div span:last-child {
+            font-weight: 600;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 12px 22px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.3s ease;
+        }
+
+        .btn-home {
+            background: #ecf0f1;
+            color: #2c3e50;
+        }
+
+        .btn-home:hover {
+            background: #dfe6e9;
+        }
+
+        .btn-invoice {
+            background: #2c7be5;
+            color: #ffffff;
+        }
+
+        .btn-invoice:hover {
+            background: #1a5fd0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="success-card">
+
+    <div class="success-icon">✓</div>
+
+    <h1>Checkout Successful</h1>
+    <p>The guest has been successfully checked out.<br>
+        Thank you for managing your reservation.</p>
+
+    <div class="details">
+        <div>
+            <span>Reservation ID</span>
+            <span th:text="${reservation.reservationId}">101</span>
+        </div>
+        <div>
+            <span>Room Number</span>
+            <span th:text="${reservation.room.roomNo}">205</span>
+        </div>
+        <div>
+            <span>Guest Name</span>
+            <span th:text="${reservation.client.clientName}">John Doe</span>
+        </div>
+        <div>
+            <span>Total Amount</span>
+            <span>₹ <span th:text="${totalAmount}">5500</span></span>
+        </div>
+    </div>
+
+    <div class="btn-group">
+        <a th:href="@{/dashboard}" class="btn btn-home">Home</a>
+        <a th:href="@{/reservation/invoice/{id}(id=${reservation.client.clientId})}" class="btn btn-invoice">
+            Download Invoice
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>

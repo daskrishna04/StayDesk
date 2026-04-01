@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Reservation</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background: #ffffff;
+            width: 480px;
+            padding: 40px;
+            border-radius: 26px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+            animation: fadeIn 0.9s ease;
+        }
+
+        .card h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        label {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid #ccc;
+            outline: none;
+            font-size: 14px;
+            transition: 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: #2c5364;
+            box-shadow: 0 0 8px rgba(44,83,100,0.35);
+        }
+
+        .error {
+            color: #e74c3c;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        button {
+            border: none;
+            padding: 12px 24px;
+            border-radius: 14px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .btn-save {
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            color: #fff;
+        }
+
+        .btn-save:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+        }
+
+        .btn-home {
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            color: #2c3e50;
+        }
+
+        .btn-home:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2>Create Reservation</h2>
+
+    <form th:action="@{/reservation/reservation-save}" th:object="${reservation}" method="post">
+
+        <!-- Client -->
+        <div class="form-group">
+            <label>Select Client</label>
+            <select name="clientId" required>
+                <option value="">Select Client</option>
+                <option th:each="c : ${clients}"
+                        th:value="${c.clientId}"
+                        th:text="${c.clientId}+'  -  '+${c.clientName}">
+                </option>
+            </select>
+            <div class="error" th:if="${#fields.hasErrors('client')}"
+                 th:errors="*{client}"></div>
+        </div>
+
+        <!-- Room -->
+        <div class="form-group">
+            <label>Select Room</label>
+            <select name="roomNo" required>
+                <option value="">Select Room</option>
+                <option th:each="r : ${availableRooms}"
+                        th:value="${r.roomNo}"
+                        th:text="'Room ' + ${r.roomNo} + ' - ' + ${r.type}">
+                </option>
+            </select>
+            <div class="error" th:if="${#fields.hasErrors('room')}"
+                 th:errors="*{room}"></div>
+        </div>
+
+        <!-- Balance -->
+        <div class="form-group">
+            <label>Balance Amount (₹)</label>
+            <input type="number" th:field="*{balance}" placeholder="Enter balance amount">
+            <div class="error" th:if="${#fields.hasErrors('balance')}"
+                 th:errors="*{balance}"></div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="buttons">
+            <button type="submit" class="btn-save">Confirm Reservation</button>
+            <a th:href="@{/dashboard}">
+                <button type="button" class="btn-home">Home</button>
+            </a>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>

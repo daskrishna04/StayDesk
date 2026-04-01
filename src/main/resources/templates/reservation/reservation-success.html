@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation Successful</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background: linear-gradient(135deg, #f4f7f9, #e9eff5);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .success-card {
+            background: #ffffff;
+            padding: 45px 40px;
+            width: 460px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1);
+            animation: slideFade 0.8s ease;
+        }
+
+        .icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: #e6f6ee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon svg {
+            width: 42px;
+            height: 42px;
+            color: #16a34a;
+        }
+
+        h2 {
+            margin: 10px 0;
+            color: #2f3e46;
+            font-weight: 600;
+        }
+
+        p {
+            color: #6b7280;
+            font-size: 15px;
+            margin: 15px 0 30px;
+            line-height: 1.6;
+        }
+
+        .details {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 30px;
+            text-align: left;
+            font-size: 14px;
+            color: #374151;
+        }
+
+        .details div {
+            margin-bottom: 8px;
+        }
+
+        .details span {
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        .buttons a {
+            text-decoration: none;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .home {
+            background: #edf2f7;
+            color: #2f3e46;
+        }
+
+        .home:hover {
+            background: #e2e8f0;
+        }
+
+        .new {
+            background: #e0f2fe;
+            color: #0369a1;
+        }
+
+        .new:hover {
+            background: #bae6fd;
+        }
+
+        @keyframes slideFade {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="success-card">
+
+    <div class="icon">
+        <!-- Check Icon -->
+        <svg fill="none" stroke="currentColor" stroke-width="2"
+             viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M5 13l4 4L19 7"/>
+        </svg>
+    </div>
+
+    <h2>Reservation Confirmed</h2>
+
+    <p>
+        The room has been successfully reserved.
+        Below are the reservation details for your reference.
+    </p>
+
+    <div class="details">
+        <div><span>Reservation ID:</span> <span th:text="${reservation.reservationId}">101</span></div>
+        <div><span>Client Name:</span> <span th:text="${reservation.client.clientName}">John Doe</span></div>
+        <div><span>Room No:</span> <span th:text="${reservation.room.roomNo}">205</span></div>
+        <div><span>Balance Amount:</span> ₹ <span th:text="${reservation.balance}">1500</span></div>
+    </div>
+
+    <div class="buttons">
+        <a th:href="@{/dashboard}" class="home">Home</a>
+        <a th:href="@{/reservation/reservation-form}" class="new">New Reservation</a>
+    </div>
+
+</div>
+
+</body>
+</html>

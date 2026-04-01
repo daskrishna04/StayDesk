@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Client Details</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background: linear-gradient(135deg, #f4f7fb, #e9eef5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .details-card {
+            background: #ffffff;
+            width: 520px;
+            padding: 45px;
+            border-radius: 18px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+            animation: fadeUp 0.6s ease;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(35px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 26px;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        p.subtitle {
+            text-align: center;
+            font-size: 14px;
+            color: #6c757d;
+            margin-bottom: 30px;
+        }
+
+        .info-box {
+            background: #f8f9fb;
+            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 30px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #34495e;
+        }
+
+        .info-row span:last-child {
+            font-weight: 600;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            text-decoration: none;
+            transition: 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-home {
+            background: #ecf0f1;
+            color: #2c3e50;
+        }
+
+        .btn-home:hover {
+            background: #dfe6e9;
+        }
+
+        .btn-invoice {
+            background: #2c7be5;
+            color: #ffffff;
+        }
+
+        .btn-invoice:hover {
+            background: #1a5fd0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="details-card">
+
+    <h1>Client Details</h1>
+    <p class="subtitle">Guest information and reservation summary</p>
+
+    <div class="info-box">
+        <div class="info-row">
+            <span>Client ID</span>
+            <span th:text="${client.clientId}">101</span>
+        </div>
+        <div class="info-row">
+            <span>Full Name</span>
+            <span th:text="${client.clientName}">Rahul Sharma</span>
+        </div>
+        <div class="info-row">
+            <span>Phone Number</span>
+            <span th:text="${client.phoneNumber}">9876543210</span>
+        </div>
+        <div class="info-row">
+            <span>Aadhaar Number</span>
+            <span th:text="${client.aadhaarNumber}">XXXX-XXXX-1234</span>
+        </div>
+        <div class="info-row">
+            <span>Address</span>
+            <span th:text="${client.address}">Mumbai, India</span>
+        </div>
+    </div>
+
+    <div class="btn-group">
+        <a th:href="@{/dashboard}" class="btn btn-home">Home</a>
+        <a th:href="@{/invoice/{id}(id=${client.clientId})}" class="btn btn-invoice">
+            Download Invoice
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>

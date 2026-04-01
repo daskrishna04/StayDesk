@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Room Registered Successfully</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background: linear-gradient(135deg, #f4f7fb, #e9eef5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background: #ffffff;
+            width: 460px;
+            padding: 45px;
+            border-radius: 18px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+            text-align: center;
+            animation: fadeSlide 0.7s ease;
+        }
+
+        @keyframes fadeSlide {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .icon-circle {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: #e8f7ef;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pop 0.6s ease;
+        }
+
+        @keyframes pop {
+            0% { transform: scale(0.6); }
+            100% { transform: scale(1); }
+        }
+
+        .icon-circle span {
+            font-size: 42px;
+            color: #2ecc71;
+        }
+
+        h1 {
+            font-size: 26px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 15px;
+            color: #6c757d;
+            margin-bottom: 30px;
+        }
+
+        .room-details {
+            background: #f8f9fb;
+            border-radius: 12px;
+            padding: 18px;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .room-details div {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #34495e;
+        }
+
+        .room-details span:last-child {
+            font-weight: 600;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-size: 14px;
+            text-decoration: none;
+            transition: 0.3s ease;
+        }
+
+        .btn-home {
+            background: #ecf0f1;
+            color: #2c3e50;
+        }
+
+        .btn-home:hover {
+            background: #dfe6e9;
+        }
+
+        .btn-room {
+            background: #2c7be5;
+            color: #ffffff;
+        }
+
+        .btn-room:hover {
+            background: #1a5fd0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+
+    <div class="icon-circle">
+        <span>✓</span>
+    </div>
+
+    <h1>Room Registered Successfully</h1>
+    <p>The room has been added to the system and is now ready for reservation.</p>
+
+    <div class="room-details">
+        <div>
+            <span>Room Number</span>
+            <span th:text="${room.roomNo}">101</span>
+        </div>
+        <div>
+            <span>Room Type</span>
+            <span th:text="${room.roomType}">Deluxe</span>
+        </div>
+        <div>
+            <span>Price / Night</span>
+            <span>₹ <span th:text="${room.pricePerNight}">4500</span></span>
+        </div>
+        <div>
+            <span>Status</span>
+            <span>Available</span>
+        </div>
+    </div>
+
+    <div class="btn-group">
+        <a th:href="@{/dashboard}" class="btn btn-home">Home</a>
+        <a th:href="@{/get-all-rooms}" class="btn btn-room">View Rooms</a>
+    </div>
+
+</div>
+
+</body>
+</html>

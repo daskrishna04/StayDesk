@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Client</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background: linear-gradient(135deg, #f4f7fb, #e9eef5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .search-card {
+            background: #ffffff;
+            width: 480px;
+            padding: 45px;
+            border-radius: 18px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+            animation: slideFade 0.6s ease;
+        }
+
+        @keyframes slideFade {
+            from {
+                opacity: 0;
+                transform: translateY(35px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 26px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        p {
+            text-align: center;
+            font-size: 14px;
+            color: #6c757d;
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-size: 14px;
+            color: #34495e;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #dcdfe3;
+            font-size: 14px;
+            margin-bottom: 20px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        select:focus, input:focus {
+            border-color: #2c7be5;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 12px 22px;
+            border-radius: 8px;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .btn-search {
+            background: #2c7be5;
+            color: #ffffff;
+        }
+
+        .btn-search:hover {
+            background: #1a5fd0;
+        }
+
+        .btn-home {
+            background: #ecf0f1;
+            color: #2c3e50;
+        }
+
+        .btn-home:hover {
+            background: #dfe6e9;
+        }
+
+        .error {
+            margin-top: 15px;
+            text-align: center;
+            color: #e74c3c;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="search-card">
+
+    <h1>Search Client</h1>
+    <p>Find client details using Aadhaar ID or Client ID</p>
+
+    <form th:action="@{/search-result}" method="post">
+
+        <label>Search By</label>
+        <select name="type" required>
+            <option value="">Select Option</option>
+            <option value="clientId">Client ID</option>
+            <option value="aadhaar">Aadhaar Number</option>
+        </select>
+
+        <label>Enter Value</label>
+        <input type="text" name="value" placeholder="Enter Client ID or Aadhaar" required />
+
+        <div class="btn-group">
+            <button type="submit" class="btn btn-search">Search</button>
+            <a th:href="@{/dashboard}" class="btn btn-home">Home</a>
+        </div>
+
+    </form>
+
+    <div class="error" th:if="${error}" th:text="${error}"></div>
+
+</div>
+
+</body>
+</html>

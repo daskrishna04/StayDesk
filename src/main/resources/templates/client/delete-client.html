@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Client Deleted Successfully</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background: linear-gradient(135deg, #f4f7f9, #e9eff5);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            background: #ffffff;
+            width: 460px;
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: #eaf6f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 38px;
+            color: #4caf85;
+            animation: scaleUp 0.6s ease-in-out;
+        }
+
+        h2 {
+            margin: 15px 0;
+            color: #2f3e46;
+            font-weight: 600;
+        }
+
+        p {
+            color: #6c757d;
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-home {
+            background: #edf2f7;
+            color: #2f3e46;
+        }
+
+        .btn-home:hover {
+            background: #e2e8f0;
+        }
+
+        .btn-list {
+            background: #eaf6f0;
+            color: #2d6a4f;
+        }
+
+        .btn-list:hover {
+            background: #d8f3dc;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleUp {
+            from {
+                transform: scale(0.7);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+    <div class="icon">✔</div>
+
+    <h2>Client Deleted Successfully</h2>
+
+    <p>
+        The client record has been removed from the system.<br>
+        Your hotel database is now up to date.
+    </p>
+
+    <div class="btn-group">
+        <a th:href="@{/dashboard}" class="btn btn-home">Home</a>
+        <a th:href="@{/client/clients}" class="btn btn-list">Client List</a>
+    </div>
+</div>
+
+</body>
+</html>
